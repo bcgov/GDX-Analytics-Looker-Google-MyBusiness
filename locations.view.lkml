@@ -104,6 +104,24 @@ view: locations {
     group_label: "Counts"
   }
 
+  measure: average_actions_driving_directions {
+    type: average
+    sql: ${TABLE}.actions_driving_directions ;;
+    group_label: "Averages"
+  }
+
+  measure: average_actions_phone {
+    type: average
+    sql: ${TABLE}.actions_phone ;;
+    group_label: "Averages"
+  }
+
+  measure: average_actions_website {
+    type: average
+    sql: ${TABLE}.actions_website ;;
+    group_label: "Averages"
+  }
+
   measure: average_local_post_views_search {
     type: average
     sql: ${TABLE}.local_post_views_search ;;
