@@ -71,97 +71,97 @@ view: locations {
   measure: actions_driving_directions {
     type: sum
     sql: ${TABLE}.actions_driving_directions ;;
-    group_label: "Sum Counts"
-    label: "Driving Direction Requests (sum)"
-    description: "The number of times driving directions were requested summed over the row(s) which match the selected dimensions."
+    group_label: "Counts"
+    label: "Driving Direction Requests Count"
+    description: "The number of times driving directions were requested."
   }
 
   measure: actions_phone {
     type: sum
     sql: ${TABLE}.actions_phone ;;
-    group_label: "Sum Counts"
-    label: "Phone Number Clicks (sum)"
-    description: "The number of times the phone number was clicked summed over the row(s) which match the selected dimensions."
+    group_label: "Counts"
+    label: "Phone Number Clicks Count"
+    description: "The number of times the phone number was clicked."
   }
 
   measure: actions_website {
     type: sum
     sql: ${TABLE}.actions_website ;;
-    group_label: "Sum Counts"
-    label: "Website Clicks (sum)"
-    description: "The number of times the website was clicked summed over the row(s) which match the selected dimensions."
+    group_label: "Counts"
+    label: "Website Clicks Count"
+    description: "The number of times the website was clicked."
   }
 
   measure: local_post_views_search {
     type: sum
     sql: ${TABLE}.local_post_views_search ;;
-    group_label: "Sum Counts"
-    label: "Local Post Views (sum)"
-    description: "The number of times the local post was viewed on Google Search summed over the row(s) which match the selected dimensions."
+    group_label: "Counts"
+    label: "Local Post Views Count"
+    description: "The number of times the local post was viewed on Google Search."
   }
 
   measure: photos_count_customers {
     type: sum
     sql: ${TABLE}.photos_count_customers ;;
-    group_label: "Sum Counts"
-    label: "Customer Photos (sum)"
-    description: "The total number of media items that are currently live that have been uploaded by customers summed over the row(s) which match the selected dimensions."
+    group_label: "Counts"
+    label: "Customer Photos Count"
+    description: "The total number of (live) media items that have been uploaded by customers."
   }
 
   measure: photos_count_merchant {
     type: sum
     sql: ${TABLE}.photos_count_merchant ;;
-    group_label: "Sum Counts"
-    label: "Merchant Photos (sum)"
-    description: "The total number of media items that are currently live that have been uploaded by the merchant summed over the row(s) which match the selected dimensions."
+    group_label: "Counts"
+    label: "Owner Photos Count"
+    description: "The total number of (live) media items that have been uploaded by the owner."
   }
 
   measure: photos_views_customers {
     type: sum
     sql: ${TABLE}.photos_views_customers ;;
-    group_label: "Sum Counts"
-    label: "Customer Photo Views (sum)"
-    description: "The number of views on media items uploaded by customers summed over the row(s) which match the selected dimensions."
+    group_label: "Counts"
+    label: "Customer Photo Views Count"
+    description: "The number of views on media items uploaded by customers."
   }
 
   measure: photos_views_merchant {
     type: sum
     sql: ${TABLE}.photos_views_merchant ;;
-    group_label: "Sum Counts"
-    label: "Merchant Photo Views (sum)"
-    description: "The number of views on media items uploaded by the merchant summed over the row(s) which match the selected dimensions."
+    group_label: "Counts"
+    label: "Owner Photo Views Count"
+    description: "The number of views on media items uploaded by the owner."
   }
 
   measure: queries_direct {
     type: sum
     sql: ${TABLE}.queries_direct ;;
-    group_label: "Sum Counts"
-    label: "Shown in Direct Search (sum)"
-    description: "The number of times the resource was shown when searching for the location directly summed over the row(s) which match the selected dimensions."
+    group_label: "Counts"
+    label: "Shown in Direct Search Count"
+    description: "The number of times the location was shown when searching for the location directly."
   }
 
   measure: queries_indirect {
     type: sum
     sql: ${TABLE}.queries_indirect ;;
-    group_label: "Sum Counts"
-    label: "Shown in Indirect Search (sum)"
-    description: "The number of times the resource was shown as a result of a categorical search (for example, restaurant)summed over the row(s) which match the selected dimensions."
+    group_label: "Counts"
+    label: "Shown in Indirect Search Count"
+    description: "The number of times the location was shown as a result of a categorical search (for example, restaurant)summed over the row(s) which match the selected dimensions."
   }
 
   measure: views_maps {
     type: sum
     sql: ${TABLE}.views_maps ;;
-    group_label: "Sum Counts"
-    label: "Viewed on Google Maps (sum)"
-    description: "The number of times the resource was viewed on Google Maps summed over the row(s) which match the selected dimensions."
+    group_label: "Counts"
+    label: "Views on Google Maps Count"
+    description: "The number of times the location was viewed on Google Maps."
   }
 
   measure: views_search {
     type: sum
     sql: ${TABLE}.views_search ;;
-    group_label: "Sum Counts"
-    label: "Viewed on Google Search (sum)"
-    description: "The number of times the resource was viewed on Google Search summed over the row(s) which match the selected dimensions."
+    group_label: "Counts"
+    label: "Views on Google Search Count"
+    description: "The number of times the location was viewed on Google Search."
   }
 
 
@@ -170,96 +170,96 @@ view: locations {
   measure: average_actions_driving_directions {
     type: average
     sql: ${TABLE}.actions_driving_directions ;;
-    group_label: "Average Counts"
-    label: "Driving Direction Requests (avg)"
-    description: "The average number of times driving directions were requested calculated over the row(s) which match the selected dimensions."
+    group_label: "Averages"
+    label: "Driving Direction Requests Average"
+    description: "The average number of times driving directions were requested."
   }
 
   measure: average_actions_phone {
     type: average
     sql: ${TABLE}.actions_phone ;;
-    group_label: "Average Counts"
-    label: "Phone Number Clicks (avg)"
-    description: "The average number of times the phone number was clicked calculated over the row(s) which match the selected dimensions."
+    group_label: "Averages"
+    label: "Phone Number Clicks Average"
+    description: "The average number of times the phone number was clicked."
   }
 
   measure: average_actions_website {
     type: average
     sql: ${TABLE}.actions_website ;;
-    group_label: "Average Counts"
-    label: "Website Clicks (avg)"
-    description: "The average number of times the website was clicked calculated over the row(s) which match the selected dimensions."
+    group_label: "Averages"
+    label: "Website Clicks Average"
+    description: "The average number of times the website was clicked."
   }
 
   measure: average_local_post_views_search {
     type: average
     sql: ${TABLE}.local_post_views_search ;;
-    group_label: "Average Counts"
-    label: "Local Post Views (avg)"
-    description: "The average number of times the local post was viewed on Google Search calculated over the row(s) which match the selected dimensions."
+    group_label: "Averages"
+    label: "Local Post Views Average"
+    description: "The average number of times the local post was viewed on Google Search."
   }
 
   measure: average_photos_count_customers {
     type: average
     sql: ${TABLE}.photos_count_customers ;;
-    group_label: "Average Counts"
-    label: "Customer Photos (avg)"
-    description: "The average number of media items that are currently live that have been uploaded by customers calculated over the row(s) which match the selected dimensions."
+    group_label: "Averages"
+    label: "Customer Photos Average"
+    description: "The average number of (live) media items that have been uploaded by customers."
   }
 
   measure: average_photos_count_merchant {
     type: average
     sql: ${TABLE}.photos_count_merchant ;;
-    group_label: "Average Counts"
-    label: "Merchant Photos (avg)"
-    description: "The average number of media items that are currently live that have been uploaded by the merchant calculated over the row(s) which match the selected dimensions."
+    group_label: "Averages"
+    label: "Owner Photos Average"
+    description: "The average number of (live) media items that have been uploaded by the owner."
   }
 
   measure: average_photos_views_customers {
     type: average
     sql: ${TABLE}.photos_views_customers ;;
-    group_label: "Average Counts"
-    label: "Customer Photo Views (avg)"
-    description: "The average number of views on media items uploaded by customers calculated over the row(s) which match the selected dimensions."
+    group_label: "Averages"
+    label: "Customer Photo Views Average"
+    description: "The average number of views on media items uploaded by customers."
   }
 
   measure: average_photos_views_merchant {
     type: average
     sql: ${TABLE}.photos_views_merchant ;;
-    group_label: "Average Counts"
-    label: "Merchant Photo Views (avg)"
-    description: "The average number of views on media items uploaded by the merchant calculated over the row(s) which match the selected dimensions."
+    group_label: "Averages"
+    label: "Owner Photo Views Average"
+    description: "The average number of views on media items uploaded by the owner."
   }
 
   measure: average_queries_direct {
     type: average
     sql: ${TABLE}.queries_direct ;;
-    group_label: "Average Counts"
-    label: "Shown in Direct Search (avg)"
-    description: "The average number of times the resource was shown when searching for the location directly calculated over the row(s) which match the selected dimensions."
+    group_label: "Averages"
+    label: "Shown in Direct Search Average"
+    description: "The average number of times the location was shown when searching for the location directly."
   }
 
   measure: average_queries_indirect {
     type: average
     sql: ${TABLE}.queries_indirect ;;
-    group_label: "Average Counts"
-    label: "Shown in Indirect Search (avg)"
-    description: "The average number of times the resource was shown as a result of a categorical search (for example, restaurant) calculated over the row(s) which match the selected dimensions."
+    group_label: "Averages"
+    label: "Shown in Indirect Search Average"
+    description: "The average number of times the location was shown as a result of a categorical search (for example, restaurant)."
   }
 
   measure: average_views_maps {
     type: average
     sql: ${TABLE}.views_maps ;;
-    group_label: "Average Counts"
-    label: "Viewed on Google Maps (avg)"
-    description: "The average number of times the resource was viewed on Google Maps calculated over the row(s) which match the selected dimensions."
+    group_label: "Averages"
+    label: "Views on Google Maps Average"
+    description: "The average number of times the location was viewed on Google Maps."
   }
 
   measure: average_views_search {
     type: average
     sql: ${TABLE}.views_search ;;
-    group_label: "Average Counts"
-    label: "Viewed on Google Search (avg)"
-    description: "The average umber of times the resource was viewed on Google Search calculated over the row(s) which match the selected dimensions."
+    group_label: "Averages"
+    label: "Views on Google Search Average"
+    description: "The average umber of times the location was viewed on Google Search."
   }
 }
