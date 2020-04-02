@@ -12,3 +12,12 @@ include: "/Views/*.view"
 
 explore: locations {
   }
+
+explore: driving_directions {
+  always_filter: {
+    filters: {
+      field: days_aggregated
+      value: "7"
+    }
+  }
+}
