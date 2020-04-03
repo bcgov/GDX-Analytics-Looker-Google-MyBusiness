@@ -15,8 +15,15 @@ view: driving_directions {
   dimension: utc_query_date {
     type: date
     sql: ${TABLE}.utc_query_date ;;
-    label: "Query Date in UTC"
+    label: " Query Date in UTC"
     description: "The aggregate results will be determined based on this UTC based query date."
+  }
+
+  dimension: days_aggregated {
+    type: number
+    sql:${TABLE}.days_aggregated ;;
+    label: "Days Aggregated"
+    description: "Must be set to one of: 7, 30, or 90. Results are aggregated over this many days as of the UTC Query Date."
   }
 
   dimension: client_shortname {
@@ -69,8 +76,8 @@ view: driving_directions {
 
   dimension: region {
     type: location
-    sql_latitude: ${TABLE}.region_longitude ;;
-    sql_longitude: ${TABLE}.region_latitude ;;
+    sql_latitude: ${TABLE}.region_latitude ;;
+    sql_longitude: ${TABLE}.region_longitude ;;
     label: "Region Coordinates"
     group_label: "Region"
     description: "The position of the location based on it's latitude/longitude."
@@ -94,18 +101,6 @@ view: driving_directions {
   }
 
   ###
-  # FILTERS
-  ###
-
-  filter: days_aggregated {
-    type: number
-    suggestions: ["7","30","90"]
-    sql: ${TABLE}.days_aggregated ;;
-    label: "Days Aggregated"
-    description: "Filter results to this number of days since UTC Query Date."
-  }
-
-  ###
   # MEASURES
   ###
 
@@ -113,37 +108,49 @@ view: driving_directions {
     required_fields: [days_aggregated]
     type: sum
     sql: CASE
-          WHEN ${days_aggregated} = 7 THEN ${TABLE}.region_count_seven_days
-          WHEN ${days_aggregated} = 30 THEN ${TABLE}.region_count_thirty_days
-          WHEN ${days_aggregated} = 90 THEN ${TABLE}.region_count_ninety_days
+          WHEN ${days_aggregated} = '7' THEN ${TABLE}.region_count_seven_days
+          WHEN ${days_aggregated} = '30' THEN ${TABLE}.region_count_thirty_days
+          WHEN ${days_aggregated} = '90' THEN ${TABLE}.region_count_ninety_days
           ELSE NULL
          END ;;
-    label: "Requests count"
-    group_label: "Counts"
-    description: "The count of requests from this region filtered on the Days Aggregated ."
+    label: "Requests sum"
+    description: "The sum of requests from this region filtered on the Days Aggregated ."
   }
 
-  measure: region_count_ninety_days {
-    type: sum
-    sql: ${TABLE}.region_count_ninety_days ;;
-    label: "90 Day Count"
-    group_label: "Counts"
-    description: "The count of requests from this region over 90 days since this query date."
-  }
-
-  measure: region_count_thirty_days {
-    type: sum
-    sql: ${TABLE}.region_count_thirty_days ;;
-    label: "30 Day Count"
-    group_label: "Counts"
-    description: "The count of requests from this region over 30 days since this query date."
+  measure: dynamic_average {
+    required_fields: [days_aggregated]
+    type: average
+    sql: CASE
+          WHEN ${days_aggregated} = '7' THEN ${TABLE}.region_count_seven_days
+          WHEN ${days_aggregated} = '30' THEN ${TABLE}.region_count_thirty_days
+          WHEN ${days_aggregated} = '90' THEN ${TABLE}.region_count_ninety_days
+          ELSE NULL
+         END ;;
+    label: "Requests average"
+    description: "The average of requests from this region filtered on the Days Aggregated ."
   }
 
   measure: region_count_seven_days {
+    hidden: yes
     type: sum
     sql: ${TABLE}.region_count_seven_days ;;
     label: "7 Day Count"
-    group_label: "Counts"
     description: "The count of requests from this region over 7 days since this query date."
+  }
+
+  measure: region_count_thirty_days {
+    hidden: yes
+    type: sum
+    sql: ${TABLE}.region_count_thirty_days ;;
+    label: "30 Day Count"
+    description: "The count of requests from this region over 30 days since this query date."
+  }
+
+  measure: region_count_ninety_days {
+    hidden: yes
+    type: sum
+    sql: ${TABLE}.region_count_ninety_days ;;
+    label: "90 Day Count"
+    description: "The count of requests from this region over 90 days since this query date."
   }
 }
