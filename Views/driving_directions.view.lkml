@@ -131,7 +131,7 @@ view: driving_directions {
   }
 
   measure: region_count_seven_days {
-    hidden: yes
+#     hidden: yes
     type: sum
     sql: ${TABLE}.region_count_seven_days ;;
     label: "7 Day Count"
@@ -139,7 +139,7 @@ view: driving_directions {
   }
 
   measure: region_count_thirty_days {
-    hidden: yes
+#     hidden: yes
     type: sum
     sql: ${TABLE}.region_count_thirty_days ;;
     label: "30 Day Count"
@@ -147,7 +147,7 @@ view: driving_directions {
   }
 
   measure: region_count_ninety_days {
-    hidden: yes
+#     hidden: yes
     type: sum
     sql: ${TABLE}.region_count_ninety_days ;;
     label: "90 Day Count"
