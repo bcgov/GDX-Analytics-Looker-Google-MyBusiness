@@ -16,8 +16,7 @@ explore: locations {
 explore: driving_directions {
   always_filter: {
     filters: {
-      field: days_aggregated
-      value: "7"
+      field: days_to_aggregate
     }
   }
 }

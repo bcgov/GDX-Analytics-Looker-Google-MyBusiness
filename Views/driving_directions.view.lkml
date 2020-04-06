@@ -2,11 +2,11 @@ view: driving_directions {
   derived_table: {
     sql:
       SELECT
-        gd.*
+        *
       FROM
-        google.gmb_directions as gd
+        google.gmb_directions
       WHERE
-        {% condition days_aggregated %} gd.days_aggregated {% endcondition %}
+        {% condition days_to_aggregate %} days_aggregated {% endcondition %}
     ;;
   }
 
@@ -19,11 +19,28 @@ view: driving_directions {
     description: "The aggregate results will be determined based on this UTC based query date."
   }
 
+  parameter: days_to_aggregate {
+    type: unquoted
+    allowed_value: {
+      label: "7"
+      value: "7"
+    }
+    allowed_value: {
+      label: "30"
+      value: "30"
+    }
+    allowed_value: {
+      label: "90"
+      value: "90"
+    }
+    description: "Days to Aggregate determines if the results you derive will be at the 7 day, 30 day, or 90 day scope on the UTC Query Date. It is a required filter."
+  }
+
   dimension: days_aggregated {
     type: number
     sql:${TABLE}.days_aggregated ;;
     label: "Days Aggregated"
-    description: "Must be set to one of: 7, 30, or 90. Results are aggregated over this many days as of the UTC Query Date."
+    description: "Will be either 7, 30, or 90. This will always reflect what was selected by the 'Days to Aggregate' parameter."
   }
 
   dimension: client_shortname {
@@ -105,12 +122,11 @@ view: driving_directions {
   ###
 
   measure: dynamic_sum {
-    required_fields: [days_aggregated]
     type: sum
     sql: CASE
-          WHEN ${days_aggregated} = '7' THEN ${TABLE}.region_count_seven_days
-          WHEN ${days_aggregated} = '30' THEN ${TABLE}.region_count_thirty_days
-          WHEN ${days_aggregated} = '90' THEN ${TABLE}.region_count_ninety_days
+          WHEN {% parameter days_to_aggregate %} = '7' THEN ${TABLE}.region_count_seven_days
+          WHEN {% parameter days_to_aggregate %} = '30' THEN ${TABLE}.region_count_thirty_days
+          WHEN {% parameter days_to_aggregate %} = '90' THEN ${TABLE}.region_count_ninety_days
           ELSE NULL
          END ;;
     label: "Requests sum"
@@ -118,12 +134,11 @@ view: driving_directions {
   }
 
   measure: dynamic_average {
-    required_fields: [days_aggregated]
     type: average
     sql: CASE
-          WHEN ${days_aggregated} = '7' THEN ${TABLE}.region_count_seven_days
-          WHEN ${days_aggregated} = '30' THEN ${TABLE}.region_count_thirty_days
-          WHEN ${days_aggregated} = '90' THEN ${TABLE}.region_count_ninety_days
+          WHEN {% parameter days_to_aggregate %} = '7' THEN ${TABLE}.region_count_seven_days
+          WHEN {% parameter days_to_aggregate %} = '30' THEN ${TABLE}.region_count_thirty_days
+          WHEN {% parameter days_to_aggregate %} = '90' THEN ${TABLE}.region_count_ninety_days
           ELSE NULL
          END ;;
     label: "Requests average"
@@ -134,7 +149,7 @@ view: driving_directions {
 #     hidden: yes
     type: sum
     sql: ${TABLE}.region_count_seven_days ;;
-    label: "7 Day Count"
+    label: " 7 Day Count"
     description: "The count of requests from this region over 7 days since this query date."
   }
 
