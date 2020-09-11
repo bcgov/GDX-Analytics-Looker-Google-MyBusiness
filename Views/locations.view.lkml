@@ -1,6 +1,14 @@
+include: "//snowplow_web_block/Includes/date_comparisons_common.view"
+
 view: locations {
   sql_table_name: google.locations ;;
   label: "Google MyBusiness Locations"
+
+  extends: [date_comparisons_common]
+
+  dimension_group: filter_start {
+    sql: ${TABLE}.date  ;;
+  }
 
 # 'client' is an internally defined short-name matching an account number to a client of GDX Analytics services
 # for example: 'servicebc' is a short-name for the account holder that contains the Service BC office locations
@@ -36,14 +44,7 @@ view: locations {
 # location results are updated nightly; the latest data available from Google MyBusiness API is from two days ago.
   dimension_group: date {
     type: time
-    timeframes: [
-      raw,
-      date,
-      week,
-      month,
-      quarter,
-      year
-    ]
+    timeframes: [raw, time, minute, minute10, time_of_day, hour_of_day, hour, date, day_of_month, day_of_week, week, month, quarter, year]
     convert_tz: no
     datatype: date
     sql: ${TABLE}.date ;;
