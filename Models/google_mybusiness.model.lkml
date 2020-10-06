@@ -20,3 +20,5 @@ explore: driving_directions {
     }
   }
 }
+
+# Adding comment to the model file to test https authentication - SY
