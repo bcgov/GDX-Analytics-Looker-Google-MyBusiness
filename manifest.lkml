@@ -7,3 +7,5 @@ project_name: "google_mybusiness"
 local_dependency: {
   project: "snowplow_web_block"
 }
+
+# test comment
