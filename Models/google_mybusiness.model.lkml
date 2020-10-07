@@ -9,7 +9,6 @@ label: "Google My Business"
 # include all views in this project
 include: "/Views/*.view"
 
-
 explore: locations {
   }
 
