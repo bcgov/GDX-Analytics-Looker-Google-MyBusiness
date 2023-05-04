@@ -5,6 +5,7 @@
 ---
 GDX Analytics Looker project to integrate the Google MyBusiness API for Location Insights
 
+
 ## Features
 
 This Looker project provides views into the underlying database tables storing Location Insights from the Google MyBusiness API.
